@@ -89,6 +89,11 @@ abstract class LocalAuthPlatform extends PlatformInterface {
     throw UnimplementedError('isDeviceSupported() has not been implemented.');
   }
 
+  /// Returns true if biometrics failed
+  Future<bool> biometricsFailed() async {
+    throw UnimplementedError('biometricsFailed() has not been implemented.');
+  }
+
   /// Cancels any authentication currently in progress.
   ///
   /// Returns true if auth was cancelled successfully.

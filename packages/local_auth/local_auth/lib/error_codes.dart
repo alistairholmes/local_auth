@@ -27,3 +27,6 @@ const String permanentlyLockedOut = 'PermanentlyLockedOut';
 
 /// Indicates that the biometricOnly parameter can't be true on Windows
 const String biometricOnlyNotSupported = 'biometricOnlyNotSupported';
+
+/// Indicates that the biometrics failed or timeout
+const String biometricsNotRecognised = 'biometricsNotRecognized';

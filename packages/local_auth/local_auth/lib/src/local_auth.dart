@@ -38,12 +38,12 @@ class LocalAuthentication {
   /// simulator.
   Future<bool> authenticate(
       {required String localizedReason,
-      Iterable<AuthMessages> authMessages = const <AuthMessages>[
-        IOSAuthMessages(),
-        AndroidAuthMessages(),
-        WindowsAuthMessages()
-      ],
-      AuthenticationOptions options = const AuthenticationOptions()}) {
+        Iterable<AuthMessages> authMessages = const <AuthMessages>[
+          IOSAuthMessages(),
+          AndroidAuthMessages(),
+          WindowsAuthMessages()
+        ],
+        AuthenticationOptions options = const AuthenticationOptions()}) {
     return LocalAuthPlatform.instance.authenticate(
       localizedReason: localizedReason,
       authMessages: authMessages,
@@ -73,4 +73,9 @@ class LocalAuthentication {
   /// Returns a list of enrolled biometrics.
   Future<List<BiometricType>> getAvailableBiometrics() =>
       LocalAuthPlatform.instance.getEnrolledBiometrics();
+
+
+  /// Returns true if biometrics failed
+  Future<bool> biometricsFailed() async =>
+      LocalAuthPlatform.instance.biometricsFailed();
 }

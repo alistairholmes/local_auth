@@ -14,7 +14,6 @@ class AndroidAuthMessages extends AuthMessages {
   /// Constructs a new instance.
   const AndroidAuthMessages({
     this.biometricHint,
-    this.biometricNotRecognized,
     this.biometricRequiredTitle,
     this.biometricSuccess,
     this.cancelButton,
@@ -28,10 +27,6 @@ class AndroidAuthMessages extends AuthMessages {
   /// Hint message advising the user how to authenticate with biometrics.
   /// Maximum 60 characters.
   final String? biometricHint;
-
-  /// Message to let the user know that authentication was failed.
-  /// Maximum 60 characters.
-  final String? biometricNotRecognized;
 
   /// Message shown as a title in a dialog which indicates the user
   /// has not set up biometric authentication on their device.
@@ -74,11 +69,9 @@ class AndroidAuthMessages extends AuthMessages {
   Map<String, String> get args {
     return <String, String>{
       'biometricHint': biometricHint ?? androidBiometricHint,
-      'biometricNotRecognized':
-          biometricNotRecognized ?? androidBiometricNotRecognized,
       'biometricSuccess': biometricSuccess ?? androidBiometricSuccess,
       'biometricRequired':
-          biometricRequiredTitle ?? androidBiometricRequiredTitle,
+      biometricRequiredTitle ?? androidBiometricRequiredTitle,
       'cancelButton': cancelButton ?? androidCancelButton,
       'deviceCredentialsRequired': deviceCredentialsRequiredTitle ??
           androidDeviceCredentialsRequiredTitle,
@@ -86,7 +79,7 @@ class AndroidAuthMessages extends AuthMessages {
           androidDeviceCredentialsSetupDescription,
       'goToSetting': goToSettingsButton ?? goToSettings,
       'goToSettingDescription':
-          goToSettingsDescription ?? androidGoToSettingsDescription,
+      goToSettingsDescription ?? androidGoToSettingsDescription,
       'signInTitle': signInTitle ?? androidSignInTitle,
     };
   }
@@ -94,26 +87,24 @@ class AndroidAuthMessages extends AuthMessages {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AndroidAuthMessages &&
-          runtimeType == other.runtimeType &&
-          biometricHint == other.biometricHint &&
-          biometricNotRecognized == other.biometricNotRecognized &&
-          biometricRequiredTitle == other.biometricRequiredTitle &&
-          biometricSuccess == other.biometricSuccess &&
-          cancelButton == other.cancelButton &&
-          deviceCredentialsRequiredTitle ==
-              other.deviceCredentialsRequiredTitle &&
-          deviceCredentialsSetupDescription ==
-              other.deviceCredentialsSetupDescription &&
-          goToSettingsButton == other.goToSettingsButton &&
-          goToSettingsDescription == other.goToSettingsDescription &&
-          signInTitle == other.signInTitle;
+          other is AndroidAuthMessages &&
+              runtimeType == other.runtimeType &&
+              biometricHint == other.biometricHint &&
+              biometricRequiredTitle == other.biometricRequiredTitle &&
+              biometricSuccess == other.biometricSuccess &&
+              cancelButton == other.cancelButton &&
+              deviceCredentialsRequiredTitle ==
+                  other.deviceCredentialsRequiredTitle &&
+              deviceCredentialsSetupDescription ==
+                  other.deviceCredentialsSetupDescription &&
+              goToSettingsButton == other.goToSettingsButton &&
+              goToSettingsDescription == other.goToSettingsDescription &&
+              signInTitle == other.signInTitle;
 
   @override
   int get hashCode => Object.hash(
       super.hashCode,
       biometricHint,
-      biometricNotRecognized,
       biometricRequiredTitle,
       biometricSuccess,
       cancelButton,
@@ -138,11 +129,6 @@ String get androidBiometricHint => Intl.message('Verify identity',
     desc: 'Hint message advising the user how to authenticate with biometrics. '
         'Maximum 60 characters.');
 
-/// Message to let the user know that authentication was failed.
-String get androidBiometricNotRecognized =>
-    Intl.message('Not recognized. Try again.',
-        desc: 'Message to let the user know that authentication was failed. '
-            'Maximum 60 characters.');
 
 /// Message to let the user know that authentication was successful. It
 String get androidBiometricSuccess => Intl.message('Success',
@@ -187,6 +173,6 @@ String get androidDeviceCredentialsSetupDescription =>
 /// biometric on their device.
 String get androidGoToSettingsDescription => Intl.message(
     'Biometric authentication is not set up on your device. Go to '
-    "'Settings > Security' to add biometric authentication.",
+        "'Settings > Security' to add biometric authentication.",
     desc: 'Message advising the user to go to the settings and configure '
         'biometric on their device.');
